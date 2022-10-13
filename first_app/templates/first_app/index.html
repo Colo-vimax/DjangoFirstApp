@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +7,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First App</title>
+    <link rel="stylesheet" href="{% static 'CSS/main.css'%}"/>
 </head>
 <body>
-    <h1>i love my life</h1>
-    {{ insert_me }}
-</body>
+    <h1>Hi welcome to Django Level two!</h1>
+    <h2>Here are your access record:</h2>
+
+    <div class="djangotwo">
+        {% if access_records %}
+        <table>
+            <thead>
+                <th>Site name</th>
+                <th>Date Accessed</th>
+            </thead>
+        {% for acc in access_records %}
+        <tr>
+            <td>{{ acc.name }}</td>
+            <td>{{ acc.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No ACCESS RECORD FOUND!</p>
+    {% endif %}
+
+
+
+
+
+
+    </div>
 </html>
